@@ -32,8 +32,8 @@ else if ($scope.items > 3) {
 }
   function splitString(stringToSplit, separator) {
   var arrayOfStrings = stringToSplit.split(separator);
-  var filteredStrings = arrayOfStrings.filter(function(v){return v!==''});
-  return filteredStrings.length;
+  var filterEmptyStrings = arrayOfStrings.filter(function(v){return v.trim() !==''});
+  return filterEmptyStrings.length;
 }
 
 })();
