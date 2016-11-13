@@ -29,12 +29,10 @@ function NarrowItDownController(MenuSearchService) {
       list.found = [];
 
       list.message = '';
-list.searchTerm = 'eggs';
-      list.getFilteredMenu =  function() {
-        list.found = [];
-        //console.log(list.searchTerm);
 
-      //list.found = MenuSearchService.getMatchedMenuItems(list.searchTerm);
+      list.getFilteredMenu =  function() {
+      list.found = [];
+
       MenuSearchService.getMatchedMenuItems(list.searchTerm).then
       (function (searchComplete) {
         list.found = searchComplete;
@@ -44,19 +42,7 @@ list.searchTerm = 'eggs';
       else {
         list.message = null;
       }
-
-      // console.log(list.message);
-      // console.log(list.found.length);
     });
-      //var promise = MenuSearchService.getMatchedMenuItems(list.searchTerm);
-
-      //list.found.Title = "test " ;
-
-      // console.log(list.message);
-      //
-      // console.log(list.found.length);
-      //console.log(list.found);
-
   }
 
   list.removeMenuItem = function(index){
@@ -73,7 +59,6 @@ function MenuSearchService($http, $q, ApiBasePath) {
 service.getMatchedMenuItems = function (searchTerm) {
   if (searchTerm == '')  {
     return $q.when([]);
-    //return [];
   }
 
   result = [];
@@ -87,29 +72,16 @@ return $http({
         for (var i = 0; i < result.length; i++) {
           var description = result[i].description;
           if (description.toLowerCase().indexOf(searchTerm) !== -1) {
-          //  var item = {
-          //     name: result[i].name,
-          //     short_name: result[i].short_name,
-          //     description: result[i].description
-          //   };
-          //     found.push(item);
               matching.push(result[i]);
-              //console.log(found.length);
             }
           }
-          //console.log(found.length);
           return matching;
         }).catch(function (error) {
   console.log("error getting all data");
 });
 
-
 };
 
 }
-
-
-
-
 
 })();
