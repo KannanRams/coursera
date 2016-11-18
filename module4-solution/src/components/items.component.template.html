@@ -1,0 +1,6 @@
+<ul id="items-list" class="list-group-items">
+  <li class="list-group-items" ng-repeat="item in $ctrl.items">
+    <span class="label label-info">{{item.short_name }}</span>
+    <span class="item-name">{{ "    - " + item.name }}</span>
+  </li>
+</ul>
